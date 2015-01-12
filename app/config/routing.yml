@@ -1,0 +1,26 @@
+acme_user:
+    resource: "@AcmeUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+acme_data:
+    resource: "@AcmeDataBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_data:
+    resource: "@AdminDataBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin_panel:
+    resource: "@AdminPanelBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group

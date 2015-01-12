@@ -1,0 +1,5 @@
+http://gitnacho.github.io/symfony-docs-es/cookbook/security/acl.html
+
+http://symfony.com/doc/current/cookbook/security/acl.html
+
+http://blog.mayflower.de/1944-ACLs-and-Symfony2.html

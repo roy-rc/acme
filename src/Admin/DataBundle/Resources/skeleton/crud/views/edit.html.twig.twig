@@ -1,0 +1,23 @@
+{% block extends %}
+{{ "{% extends 'AdminPanelBundle:Default:index.html.twig' %}" }}
+{{ "{# #}" }}
+{{ "{% form_theme edit_form 'AdminPanelBundle:Default:bootstrap_3_layout.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block content -%}" }}
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="page-header">{{ entity }} edit</h1>
+        {{ '{{ form(edit_form) }}' }}
+
+        {% set hide_edit, hide_delete = true, false %}
+        {% include 'crud/views/others/record_actions.html.twig.twig' %}
+    </div>
+</div>
+    
+{{ "{% endblock %}" }}
+
+{{ "{% block java_scripts -%}" }}
+{{ "{% endblock %}" }}
+{% endblock body %}

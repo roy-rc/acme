@@ -1,0 +1,30 @@
+{% extends 'AdminPanelBundle:Default:index.html.twig' %}
+{# #}
+{% form_theme edit_form 'AdminPanelBundle:Default:bootstrap_3_layout.html.twig' %}
+
+{% block content -%}
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="page-header">Persona edit</h1>
+        {{ form(edit_form) }}
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('persona') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+    </div>
+</div>
+    
+{% endblock %}
+
+{% block java_scripts -%}
+    <script>
+    $('#acme_databundle_persona_fechaNac').datepicker({
+        dateFormat: 'yy-mm-dd',
+    });
+    </script>
+{% endblock %}

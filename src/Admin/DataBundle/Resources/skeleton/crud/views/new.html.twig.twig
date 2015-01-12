@@ -1,0 +1,34 @@
+{% block extends %}
+{{ "{% extends 'AdminPanelBundle:Default:index.html.twig' %}" }}
+{{ "{# #}" }}
+{{ "{% form_theme form 'AdminPanelBundle:Default:bootstrap_3_layout.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block content -%}" }}
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="page-header">{{ entity }} creation</h1>
+
+        {{ '{{ form_start(form) }}
+        {{ form_errors(form) }}    
+        {% block form_row %}
+            {% spaceless %}
+            <div class="form_group">
+                {{ form_label(form) }}
+                {{ form_errors(form) }}
+                {{ form_widget(form) }}
+            </div>
+            {% endspaceless %}
+        {% endblock form_row %}
+    {{ form_end(form) }}' }}
+
+        {% set hide_edit, hide_delete = true, true %}
+        {% include 'crud/views/others/record_actions.html.twig.twig' %}
+    </div>
+</div>
+{{ "{% endblock %}" }}
+
+{{ "{% block java_scripts -%}" }}
+{{ "{% endblock %}" }}
+{% endblock body %}

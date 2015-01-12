@@ -1,0 +1,120 @@
+{% extends 'AdminPanelBundle:Default:index.html.twig' %}
+
+{% block content -%}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Persona</h1>
+
+        <table class="record_properties">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Ci</th>
+                    <td>{{ entity.ci }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre1</th>
+                    <td>{{ entity.nombre1 }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre2</th>
+                    <td>{{ entity.nombre2 }}</td>
+                </tr>
+                <tr>
+                    <th>Apellido1</th>
+                    <td>{{ entity.apellido1 }}</td>
+                </tr>
+                <tr>
+                    <th>Apellido2</th>
+                    <td>{{ entity.apellido2 }}</td>
+                </tr>
+                <tr>
+                    <th>Fechanac</th>
+                    <td>{{ entity.fechaNac|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Sexo</th>
+                    <td>{{ entity.sexo }}</td>
+                </tr>
+                <tr>
+                    <th>Img</th>
+                    <td>{{ entity.img }}</td>
+                </tr>
+                <tr>
+                    <th>Tlfmovil</th>
+                    <td>{{ entity.tlfMovil }}</td>
+                </tr>
+                <tr>
+                    <th>Tlffijo</th>
+                    <td>{{ entity.tlfFijo }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ entity.email }}</td>
+                </tr>
+                <tr>
+                    <th>Facebookid</th>
+                    <td>{{ entity.facebookId }}</td>
+                </tr>
+                <tr>
+                    <th>Twitterid</th>
+                    <td>{{ entity.twitterId }}</td>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <td>{{ entity.direccion }}</td>
+                </tr>
+                <tr>
+                    <th>Bancoid</th>
+                    <td>{{ entity.bancoId }}</td>
+                </tr>
+                <tr>
+                    <th>Ncuenta</th>
+                    <td>{{ entity.nCuenta }}</td>
+                </tr>
+                <tr>
+                    <th>Tcuenta</th>
+                    <td>{{ entity.tCuenta }}</td>
+                </tr>
+                <tr>
+                    <th>Usuarioid</th>
+                    <td>{{ entity.usuarioId }}</td>
+                </tr>
+                <tr>
+                    <th>Ip</th>
+                    <td>{{ entity.ip }}</td>
+                </tr>
+                <tr>
+                    <th>Createdat</th>
+                    <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Updatedat</th>
+                    <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Dataid</th>
+                    <td>{{ entity.dataId }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+                <ul class="record_actions">
+    <li>
+        <a href="{{ path('persona') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('persona_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+</div>
+{% endblock %}

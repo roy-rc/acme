@@ -1,0 +1,40 @@
+{% extends 'AdminPanelBundle:Default:index.html.twig' %}
+{# #}
+{% form_theme form 'AdminPanelBundle:Default:bootstrap_3_layout.html.twig' %}
+
+{% block content -%}
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="page-header">Persona creation</h1>
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}    
+        {% block form_row %}
+            {% spaceless %}
+            <div class="form_group">
+                {{ form_label(form) }}
+                {{ form_errors(form) }}
+                {{ form_widget(form) }}
+            </div>
+            {% endspaceless %}
+        {% endblock form_row %}
+    {{ form_end(form) }}
+
+                <ul class="record_actions">
+    <li>
+        <a href="{{ path('persona') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block java_scripts -%}
+    <script>
+    $('#acme_databundle_persona_fechaNac').datepicker({
+        dateFormat: 'yy-mm-dd',
+    });
+    </script>
+{% endblock %}

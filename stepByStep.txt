@@ -1,0 +1,76 @@
+Probar el sf2
+    app/console
+    - si esto genera un error de Warning: date_default_timezone_get(): ....
+        se debe modificar el AppKernel.php (app/AppKernel.php)
+        agregando la siguiente funcion
+        class AppKernel extends Kernel
+        {
+            public function __construct($environment, $debug) 
+            { 
+                date_default_timezone_set('America/Caracas'); 
+                parent::__construct($environment, $debug); 
+            } 
+            ....
+    
+Generando bundle para el panel (el panel de administrador del sito - sbadmin2)
+    app/console generate:bundle
+    Bundle namespace: Admin/PanelBundle
+    Configuration format (yml, xml, php, or annotation): annotation
+
+Copiar las fuentes de sbadmin2 en PanelBundle/Resource/public (css,js,fonts, etc)
+
+Copiar el index de sbadmin2 a el index.html.twig en PanelBundle/Resource/views/Default 
+
+Ejecutar app/console assets:install web
+    -esto copia las fuentes (css,js,fonts, etc) en /web/bundle/panelpanel
+
+Creamos una tabla en bd para generar crud
+
+Generamos un bundle para los datos a administrar
+    app/console generate:bundle
+    Bundle namespace: Admin/DataBundle
+    Configuration format (yml, xml, php, or annotation): annotation
+
+Importamos la estructura de la tabla Persona al bundle
+    app/console doctrine:mapping:import AdminDataBundle annotation
+
+Modificamos Entity/Persona.php
+    agregamos gets y sets
+    agregamos los metodos de callbacks
+    /**
+    * Persona
+    *
+    * @ORM\Table(name="persona", uniqueConstraints={@ORM\UniqueConstraint(name="ci_UNIQUE", columns={"ci"})}, indexes={@ORM\Index(name="fk_persona_banco", columns={"banco_id"}), @ORM\Index(name="fk_persona_data", columns={"data_id"})})
+    * @ORM\HasLifecycleCallbacks
+    * @ORM\Entity
+    */
+   class Persona
+   {
+    ...
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps()
+    {
+        $this->setUpdatedAt(new \DateTime(date('Y-m-d H:i:s')));
+
+        if($this->getCreatedAt() == null)
+        {
+            $this->setCreatedAt(new \DateTime(date('Y-m-d H:i:s')));
+        }
+    }
+
+Creamos el CRUD
+    app/console doctrine:generate:crud --entity=AdminDataBundle:Persona --route-prefix=persona --with-write --format=annotation
+
+Eliminamos el campo create_at y updated_at de Form/Personatype.php porque son campos autoadministrables
+
+aplicamos el estilo creado en AdminPanelBundle
+{% extends "AdminPanelBundle::layout.html.twig" %}
+
+{% block content -%}
+.....
+{% endblock %}
+
+
