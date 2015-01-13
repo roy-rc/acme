@@ -46,7 +46,7 @@ class GenerateDoctrineCrudCommand extends GenerateDoctrineCommand
                 new InputOption('format', '', InputOption::VALUE_REQUIRED, 'Use the format for configuration files (php, xml, yml, or annotation)', 'annotation'),
                 new InputOption('overwrite', '', InputOption::VALUE_NONE, 'Do not stop the generation if crud controller already exist, thus overwriting all generated files'),
             ))
-            ->setDescription('Generates a CRUD based on a Doctrine entity')
+            ->setDescription('Genera el CRUD basado en una entidad Doctrine pero tunning...!!')
             ->setHelp(<<<EOT
 The <info>doctrine:generate:crud</info> command generates a CRUD based on a Doctrine entity.
 
